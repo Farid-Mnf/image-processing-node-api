@@ -14,7 +14,7 @@ This is a Node API that resizes images.
 ## lint code errors and warnings ##
 `npm run lint` -------> "lint": "eslint ."
 
-## fix code errors with lint-fix##
+## fix code errors with lint-fix ##
 `npm run lint-fix` ---> "lint-fix": "eslint . --fix"
 
 ## run server using nodemon to see updates every code update ##
