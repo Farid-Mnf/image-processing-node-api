@@ -1,4 +1,4 @@
-# image-processing-node-api #
+# Image processing api using NodeJs and Typescript #
 This is a Node API that resizes images.
 
 
