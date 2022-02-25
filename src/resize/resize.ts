@@ -4,8 +4,11 @@ import express from "express";
 
 const cachedUrls: ParsedQs[] = [];
 
-async function resizeImage(imageName: string, imageWidth: number, imageHeight: number): Promise<boolean> {
-  
+async function resizeImage(
+  imageName: string,
+  imageWidth: number,
+  imageHeight: number
+): Promise<boolean> {
   try {
     await sharp(`public/full/${imageName}.jpg`)
       .resize(imageWidth, imageHeight)
