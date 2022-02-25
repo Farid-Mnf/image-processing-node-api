@@ -1,12 +1,21 @@
-import request from "supertest";
-import server from "../index";
+import { resizeImage } from "../resize/resize";
+import { promises as fsPromises } from 'fs';
 
-it("responds with image", async function () {
-  const response = await request(server)
-    .get("/api?image=santamonica&width=200&height=200")
-    .set("Accept", "image/jpg");
+describe("resizeSpec suite", () => {
+  it("test resizeImage() with valid value", async function () {
+      
+      await resizeImage('palmtunnel', 200, 200).then((value) => {
+        expect(value).toBeTrue();
+      });
+      
+  });
 
-  expect(response.headers["content-length"]).toEqual("6090");
-  expect(response.headers["content-type"]).toEqual("image/jpeg");
-  expect(response.status).toEqual(200);
+  it("test resizeImage() with wrong value", async function () {
+      
+    await resizeImage('wrong image name', 200, 200).then((value) => {
+      expect(value).toBeFalse();
+    });
+    
+});
+
 });

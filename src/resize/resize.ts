@@ -4,19 +4,17 @@ import express from "express";
 
 const cachedUrls: ParsedQs[] = [];
 
-async function resizeImage(query: ParsedQs) {
-  const imageName = query.image;
-  const imageWidth = parseInt(query.width as string);
-  const imageHeight = parseInt(query.height as string);
-
+async function resizeImage(imageName: string, imageWidth: number, imageHeight: number): Promise<boolean> {
+  
   try {
     await sharp(`public/full/${imageName}.jpg`)
       .resize(imageWidth, imageHeight)
       .toFile(
         `public/thumb/${imageName + "" + imageWidth + "X" + imageHeight}.jpg`
       );
+    return true;
   } catch (error) {
-    console.log(error);
+    return false;
   }
 }
 
